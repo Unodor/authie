@@ -55,10 +55,11 @@ module Authie
     end
 
     def cookie_path
-      tokens = @controller.class.superclass.name.split('::')
+      # tokens = @controller.class.superclass.name.split('::')
 
-      # Namespace, usually /admin or / (root)
-      tokens.length > 1 ? "/#{tokens.first.downcase}" : '/'
+      # # Namespace, usually /admin or / (root)
+      # tokens.length > 1 ? "/#{tokens.first.downcase}" : '/'
+      '/'
     end
   end
 end

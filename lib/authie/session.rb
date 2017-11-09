@@ -65,7 +65,7 @@ module Authie
         :secure => controller.request.ssl?,
         :httponly => true,
         :expires => self.expires_at,
-        :path => cookie_path(controller)
+        # :path => cookie_path(controller)
       }
     end
 
@@ -262,19 +262,21 @@ module Authie
     end
 
     def self.cookie_name(controller)
-      tokens = controller.class.superclass.name.split('::')
+      # tokens = controller.class.superclass.name.split('::')
 
-      # Empty if no namespace (application)
-      name = tokens.length > 1 ? tokens.first.downcase : ''
+      # # Empty if no namespace (application)
+      # name = tokens.length > 1 ? tokens.first.downcase : ''
 
-      [name, 'user', 'session'].join('_')
+      # [name, 'user', 'session'].join('_')
+      'user_session'
     end
 
     def cookie_path(controller)
-      tokens = controller.class.superclass.name.split('::')
+      # tokens = controller.class.superclass.name.split('::')
 
-      # Namespace, usually /admin or / (root)
-      tokens.length > 1 ? "/#{tokens.first.downcase}" : '/'
+      # # Namespace, usually /admin or / (root)
+      # tokens.length > 1 ? "/#{tokens.first.downcase}" : '/'
+      '/'
     end
   end
 end
